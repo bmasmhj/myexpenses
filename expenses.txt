@@ -1,0 +1,67 @@
+my khalti 
+
+curl 'https://khalti.com/api/data/refresh/' \
+  -H 'Accept: */*' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'Authorization: Token 2bab6bbec3baaa4ac54c7b1c3ad2d45ac2b6bc59' \
+  -H 'Connection: keep-alive' \
+  -H 'Content-Type: application/json;charset=UTF-8' \
+  -H 'DEVICEID: kwa-1a57b4f5-a9a0-45bd-9ff0-b4a95956f5f2' \
+  -H 'Origin: https://web.khalti.com' \
+  -H 'Referer: https://web.khalti.com/' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Site: same-site' \
+  -H 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36' \
+  -H 'sec-ch-ua: "Google Chrome";v="107", "Chromium";v="107", "Not=A?Brand";v="24"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'sec-ch-ua-platform: "Windows"' \
+  --data-raw '{"my_info":{"url_name":"my-info"},"service_fee":{"url_name":"servicefee-user"},"user_commission":{"url_name":"my-user-commission"},"config":{"url_name":"newdashboard-config","kwargs":{"version":"v2"},"params":{"role":"Consumer"}}}' \
+  --compressed
+
+khalti history 
+
+
+    $dt = new DateTime();
+$dt->setTimezone(new DateTimeZone('Asia/Kathmandu'));
+$date = $dt->format('Y-m-d');
+$dt->sub(new DateInterval('P5D'));
+$days_ago = $dt->format('Y-m-d');
+
+$url = 'https://khalti.com/api/transaction/?start_date='.$days_ago.'&end_date='.$date;
+$ch = curl_init();
+
+curl_setopt($ch, CURLOPT_URL, $url );
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+
+curl_setopt($ch, CURLOPT_ENCODING, 'gzip, deflate');
+
+$headers = array();
+$headers[] = 'Accept: application/json, text/plain, */*';
+$headers[] = 'Accept-Language: en-US,en;q=0.9';
+$headers[] = 'Authorization: Token bf2a7eacc7b730b5fe71a53837cf2274ecbc4363';
+$headers[] = 'Connection: keep-alive';
+$headers[] = 'Deviceid: kwa-08d38b3c-a1da-4962-93f9-9fc9aa16adac';
+$headers[] = 'Origin: https://web.khalti.com';
+$headers[] = 'Referer: https://web.khalti.com/';
+$headers[] = 'Sec-Fetch-Dest: empty';
+$headers[] = 'Sec-Fetch-Mode: cors';
+$headers[] = 'Sec-Fetch-Site: same-site';
+$headers[] = 'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36';
+$headers[] = 'Sec-Ch-Ua: \"Google Chrome\";v=\"107\", \"Chromium\";v=\"107\", \"Not=A?Brand\";v=\"24\"';
+$headers[] = 'Sec-Ch-Ua-Mobile: ?0';
+$headers[] = 'Sec-Ch-Ua-Platform: \"Windows\"';
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+
+$result = curl_exec($ch);
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+}
+curl_close($ch);
+
+
+echo $result ;
+
+
+
