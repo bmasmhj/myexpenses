@@ -1,7 +1,7 @@
 function MainPage(){
     return(
     <>
-        <div className="container">
+        <div className="card">
             hello
         </div>
     </>

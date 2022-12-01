@@ -9,7 +9,7 @@ function App() {
     <>
      <Router>
       <>
-        <div className='container mt-5'>
+        <div className='container-fluid mt-2'>
             <div className='row'>
                 <Routes>
                   {/* 👇️ handle dynamic path */}
