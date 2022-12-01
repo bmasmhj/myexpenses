@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 function Login(){
     return(
     <>
-    <div className="col-md-8 offset-md-2 mt-8">
+    <div className="col-md-3 offset-md-4 mt-8">
         <div className="card">
             <div className="card-body">
                 <h3 className="text-center">Login</h3>

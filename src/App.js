@@ -13,15 +13,17 @@ function App() {
             <div className='row'>
                 <Routes>
                   {/* 👇️ handle dynamic path */}
-                  <Route path="/" element={<MainPage />}/>
+                  <Route path="/" element={<Pincode />}/>
                   <Route path="/Login" element={<Login />} />
                   <Route path="/Pincode" element={<Pincode />} />
+                  <Route path="/MainPage" element={<MainPage />} />
+
 
                   {/* 👇️ only match this when no other routes match */}
                   <Route
                     path="*"
                     element={
-                      <MainPage />
+                      <Pincode />
                     }
                   />
                 </Routes>          
